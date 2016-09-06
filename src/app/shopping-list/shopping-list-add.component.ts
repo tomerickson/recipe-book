@@ -12,3 +12,4 @@ export class ShoppingListAddComponent implements OnInit {
   }
 
 }
+
