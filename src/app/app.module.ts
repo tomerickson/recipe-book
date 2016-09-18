@@ -7,12 +7,11 @@ import { HeaderComponent } from './header.component';
 import { RecipesComponent } from './recipes';
 import { RecipeListComponent } from './recipes/recipe-list';
 import { RecipeItemComponent } from './recipes/recipe-list';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingListAddComponent } from './shopping-list/shopping-list-add.component';
+import { RecipeDetailComponent } from './recipes/recipe-detail';
+import { ShoppingListComponent } from './shopping-list';
+import { ShoppingListAddComponent } from './shopping-list';
 import { DropdownDirective } from './dropdown.directive';
-import {RecipeService} from './recipes/recipe.service';
-import {ShoppingListService} from './shopping-list';
+import { RecipeService } from './recipes';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,7 @@ import {ShoppingListService} from './shopping-list';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

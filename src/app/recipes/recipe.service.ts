@@ -12,19 +12,18 @@ export class RecipeService {
 3/4 cup|sliced green onions
 1 cup|whole milk
 3|eggs
-10|eggs
 1 tablespoon|unsalted butter
 1 pkg|(32 oz each) pasteurized prepared cheese product, cut into 1" chunks
 4 ounces|cream cheese
-2 cans|(10 oz each) Ro*Tel® Original Diced Tomatoes & Green Chilies, drained
+2 cans|(10 oz each) Ro*Tel Original Diced Tomatoes & Green Chilies, drained
 1/2 cup|small diced sweet onion`;
 
   private text2 = `3|boneless skinless chicken breasts
 3/4 cup|sliced green onions
-1 cup|La Choy® Soy Sauce
+1 cup|La Choy Soy Sauce
 3 tablespoons|gochujang
 2 tablespoons|seasoned rice vinegar
-1/4 cup|Hunt's® Tomato Ketchup
+1/4 cup|Hunt's Tomato Ketchup
 4|cloves finely minced garlic
 3 tablespoons|firmly packed light brown sugar
 2 cups|sliced napa cabbage
@@ -35,7 +34,7 @@ export class RecipeService {
 1/2 cup|fresh cilantro
 1/4 cup|seasoned rice vinegar
 1 teaspoon|granulated sugar
-1 teaspoon|La Choy® Soy Sauce
+1 teaspoon|La Choy Soy Sauce
 1 tablespoon|toasted sesame oil
 12|white corn tortillas (6 inch)`;
 
@@ -68,6 +67,5 @@ export class RecipeService {
       result.push(new Ingredient(check[2], check[1]));
     }
     return result;
-  }
-
+    }
 }
