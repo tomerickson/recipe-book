@@ -52,6 +52,14 @@ export class RecipeService {
     return this.recipes;
   }
 
+  public getRecipe(id: number) {
+    return this.recipes[id];
+  }
+
+  public deleteRecipe(recipe: Recipe) {
+    this.recipes.splice(this.recipes.indexOf(recipe), 1);
+  }
+  
   private splitStrings(multilineString: string): Ingredient[] {
     let result: Ingredient[] = [];
     let stringArray = multilineString.split('\n');
@@ -67,5 +75,5 @@ export class RecipeService {
       result.push(new Ingredient(check[2], check[1]));
     }
     return result;
-    }
+  }
 }
