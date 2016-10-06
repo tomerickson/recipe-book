@@ -1,17 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import {ShoppingListAddComponent} from './shopping-list-add.component';
-import { Ingredient} from '../shared';
-import {ShoppingListService} from './shopping-list.service';
+
+import { Ingredient } from "../shared";
+import { ShoppingListService } from "./shopping-list.service";
+
 @Component({
   selector: 'app-shopping-list',
-  templateUrl: './shopping-list.component.html'
+  templateUrl: 'shopping-list.component.html'
 })
 export class ShoppingListComponent implements OnInit {
   items: Ingredient[] = [];
-  constructor(private shoppingListService: ShoppingListService) { }
+  selectedItem: Ingredient = null;
+
+  constructor(private sls: ShoppingListService) {}
 
   ngOnInit() {
-    this.items = this.shoppingListService.getItems();
+    this.items = this.sls.getItems();
   }
 
+  onSelectItem(item: Ingredient) {
+    this.selectedItem = item;
+  }
+
+  onCleared() {
+    this.selectedItem = null;
+  }
 }
