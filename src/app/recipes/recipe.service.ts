@@ -59,7 +59,7 @@ export class RecipeService {
   public deleteRecipe(recipe: Recipe) {
     this.recipes.splice(this.recipes.indexOf(recipe), 1);
   }
-  
+
   private splitStrings(multilineString: string): Ingredient[] {
     let result: Ingredient[] = [];
     let stringArray = multilineString.split('\n');
