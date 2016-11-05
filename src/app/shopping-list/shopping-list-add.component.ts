@@ -21,6 +21,7 @@ export class ShoppingListAddComponent implements OnChanges {
       this.isAdd = false;
     }
   }
+
   onSubmit(ingredient: Ingredient) {
     const newIngredient = new Ingredient(ingredient.name, ingredient.amount);
     if (!this.isAdd) {

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   FormArray,
   FormGroup,
@@ -24,8 +24,9 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
     private recipeService: RecipeService,
-    private formBuilder: FormBuilder) {
-     }
+    private formBuilder: FormBuilder,
+    private router: Router) {
+  }
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
@@ -43,9 +44,39 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     );
   }
 
+  onSubmit() {
+    const newRecipe = this.recipeForm.value;
+    if (this.isNew) {
+      this.recipeService.addRecipe(newRecipe);
+    } else {
+      this.recipeService.editRecipe(newRecipe, this.recipe);
+    }
+    this.navigateBack();
+  }
+
+  onCancel() {
+    this.navigateBack();
+  }
+
+  onAddItem(name: string, amount: string){
+    (<FormArray>this.recipeForm.controls['ingredients']).push(
+      new FormGroup({
+        name: new FormControl(name, Validators.required),
+        amount: new FormControl(amount, Validators.required)}
+      )
+    );
+  }
+
+  onRemoveItem(index: number){
+    (<FormArray>this.recipeForm.controls['ingredients']).removeAt(index);
+  }
+  private navigateBack() {
+    this.router.navigate(['../'])
+  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
 
   private initForm() {
     let recipeName = '';
@@ -58,7 +89,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         recipeIngredients.push(new FormGroup({
           name: new FormControl(this.recipe.ingredients[i].name, Validators.required),
           amount: new FormControl(this.recipe.ingredients[i].amount, [
-            Validators.required, Validators.pattern('\\d+')
+            Validators.required/*, Validators.pattern('\\d+')*/
           ])
         }));
       };
