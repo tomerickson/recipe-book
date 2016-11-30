@@ -2,4 +2,4 @@ export * from './recipes.component';
 export * from './recipe';
 export * from './recipe.service';
 export * from './recipe-start.component';
-export * from './recipes.routes';
+export * from './recipes.routing';
